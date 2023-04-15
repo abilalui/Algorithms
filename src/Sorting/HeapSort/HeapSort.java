@@ -96,7 +96,7 @@ public class HeapSort {
         }
         HeapSort hs = new HeapSort();
 
-        System.out.print( "The output array is: " );
+        System.out.print( "The output array is: " ) ;
         System.out.println( Arrays.toString( hs.maxHeapify( array, 0)));
     }
 }
