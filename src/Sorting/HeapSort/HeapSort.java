@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class HeapSort {
 
@@ -79,10 +80,23 @@ public class HeapSort {
 
     public static void main( String[] args ) {
 
+        Scanner sc = new Scanner( System.in );
+        System.out.println("Enter the size of the array to be sorted: ");
+        int size = sc.nextInt();
+
+        // Declare/initialize the array
+        int[] array = new int[ size ];
+
+        System.out.println( "Enter the elements of array once at a time: " );
+
+        int i = 0;
+        while ( i < size ) {
+            array[i] = sc.nextInt();
+            i++;
+        }
         HeapSort hs = new HeapSort();
-        int[] arr = {1, 30, 20, 50, 39};
-        System.out.println( "Right Child is " + hs.getRight( 0 ));
-        System.out.println( "Left Child is " + hs.getLeft( 0 ));
-        System.out.println( Arrays.toString( hs.maxHeapify( arr, 0)));
+
+        System.out.print( "The output array is: " );
+        System.out.println( Arrays.toString( hs.maxHeapify( array, 0)));
     }
 }
