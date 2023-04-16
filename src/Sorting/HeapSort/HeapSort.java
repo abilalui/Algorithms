@@ -30,12 +30,11 @@ public class HeapSort {
      */
     public int[] swap( int first, int second, int[] array ) {
 
-        if (array.length > 2) {
+        if (array.length > 1) {
             int temp = 0;
             temp = array[first];
             array[first] = array[second];
             array[second] = temp;
-            return array;
         }
         return array;
     }
@@ -52,30 +51,53 @@ public class HeapSort {
      */
     public int[] maxHeapify( int[] array, int node ) {
 
+        // calculate right and left child of the node
         int rightChild = this.getRight( node );
         int leftChild = this.getLeft( node );
+        System.out.println("Array is: " + Arrays.toString( array ));
+        System.out.println("left child is: " + leftChild );
+        System.out.println("right child is: " + rightChild );
 
-        int largest = -1;
+        int largest = node; //-1;
 
-        if ( leftChild <= array.length && rightChild <= array.length ) {
-            if ( array[leftChild] > array[node] ) {
+        // if node have left child and is greater than node
+        if (( leftChild < array.length ) && ( array[leftChild] > array[node] )) {
                 largest = leftChild;
-            } else {
-                largest = node;
-            }
-            // if rightChild is greater than node.
-            if (array[rightChild] > array[largest] ) {
-                largest = rightChild;
-            }
         }
 
-        if ( largest == -1 ) {
+        // if node have the right child and its value is greater than largest
+        if (( rightChild < array.length ) && array[rightChild] > array[largest] ) {
+                //if (array[rightChild] > array[largest] ) {
+                largest = rightChild;
+        }
+        // if no right and left child are found; don't swap anything and return
+        // original array
+        System.out.println("largest value is: " + largest);
+        System.out.println("=====================================");
+        if ( largest == node ) {
             return array;
         }
+        // swapping happens here
         this.swap( node, largest, array );
 
         return maxHeapify( array, largest );
     }
+
+
+    /**
+     * This method creates a maxHeap using the given array.
+     * @param array - takes array as argument
+     * @return an array representing a maxHeap
+     */
+    public int[] buildMaxHeap( int[] array ) {
+
+        for ( int i = (array.length/2) - 1; i >= 0; i-- ) {
+            this.maxHeapify( array, i );
+            //System.out.println( array[i] );
+        }
+        return array;
+    }
+
 
 
     public static void main( String[] args ) {
@@ -87,7 +109,7 @@ public class HeapSort {
         // Declare/initialize the array
         int[] array = new int[ size ];
 
-        System.out.println( "Enter the elements of array once at a time: " );
+        System.out.println( "Enter the elements of the array one at a time: " );
 
         int i = 0;
         while ( i < size ) {
@@ -95,8 +117,10 @@ public class HeapSort {
             i++;
         }
         HeapSort hs = new HeapSort();
-
-        System.out.print( "The output array is: " ) ;
-        System.out.println( Arrays.toString( hs.maxHeapify( array, 0)));
+        int[] a = {1,2,3,4,5,6};
+        //System.out.println( "The output array is: " ) ;
+        //System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
+        //hs.buildMaxHeap( array );
+        System.out.println( Arrays.toString(hs.swap(0,1,a)) );
     }
 }
