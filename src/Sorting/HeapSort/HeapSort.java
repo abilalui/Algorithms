@@ -119,8 +119,8 @@ public class HeapSort {
         HeapSort hs = new HeapSort();
         int[] a = {1,2,3,4,5,6};
         //System.out.println( "The output array is: " ) ;
-        //System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
+        System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
         //hs.buildMaxHeap( array );
-        System.out.println( Arrays.toString(hs.swap(0,1,a)) );
+        //System.out.println( Arrays.toString(hs.swap(0,1,a)) );
     }
 }
