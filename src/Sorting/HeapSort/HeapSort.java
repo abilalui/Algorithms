@@ -99,27 +99,29 @@ public class HeapSort {
      */
     public ArrayList<Integer> heapSort( int[] array ) {
 
+        // create array list - orderedList - to add sorted values of our heap/array
         ArrayList<Integer> orderedList = new ArrayList<>();
 
         // build a max heap from given array
         this.buildMaxHeap( array );
-        System.out.println( "max heap array is: " + Arrays.toString( array));
+
         int length = array.length;
         int i = 0;
+
         while ( i < length ) {
-            System.out.println(i + "# " + i);
 
+            // add first element of array to ordered list
             orderedList.add( 0,array[0] );
-            System.out.println("List is: " + orderedList);
 
+            // swap last and first element of the array
             this.swap(0, array.length - 1, array);
-            System.out.println("Max heap after swap is: " + Arrays.toString(array));
 
+            // remove the first element of array and resize the array
             array = Arrays.copyOfRange( array, 0, array.length - 1 );
-            System.out.println("New array output of copyOfRange method is: " + Arrays.toString(array));
 
+            // heapify the array using first element of array which
+            // is the root of current heap
             this.maxHeapify( array, 0 );
-            System.out.println("array after maxheapify is: " + Arrays.toString(array));
 
             i++;
         }
@@ -144,11 +146,8 @@ public class HeapSort {
             i++;
         }
         HeapSort hs = new HeapSort();
-        int[] a = {1,2,3,4,5,6};
-        //System.out.println( "The output array is: " ) ;
-        //System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
-        //hs.buildMaxHeap( array );
-        //System.out.println( Arrays.toString(hs.swap(0,1,a)) );
+
+        System.out.println("The sorted array is: ");
         System.out.println( hs.heapSort( array ));
     }
 }
