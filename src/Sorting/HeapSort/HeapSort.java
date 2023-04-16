@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -31,8 +32,7 @@ public class HeapSort {
     public int[] swap( int first, int second, int[] array ) {
 
         if (array.length > 1) {
-            int temp = 0;
-            temp = array[first];
+            int temp = array[first];
             array[first] = array[second];
             array[second] = temp;
         }
@@ -54,10 +54,6 @@ public class HeapSort {
         // calculate right and left child of the node
         int rightChild = this.getRight( node );
         int leftChild = this.getLeft( node );
-        System.out.println("Array is: " + Arrays.toString( array ));
-        System.out.println("left child is: " + leftChild );
-        System.out.println("right child is: " + rightChild );
-
         int largest = node; //-1;
 
         // if node have left child and is greater than node
@@ -72,8 +68,6 @@ public class HeapSort {
         }
         // if no right and left child are found; don't swap anything and return
         // original array
-        System.out.println("largest value is: " + largest);
-        System.out.println("=====================================");
         if ( largest == node ) {
             return array;
         }
@@ -98,6 +92,39 @@ public class HeapSort {
         return array;
     }
 
+    /**
+     * This method sort our given integer array in non-decreasing order, using heap.
+     * @param array - takes array of integer as argument
+     * @return a sorted list of integer in a non-decreasing order
+     */
+    public ArrayList<Integer> heapSort( int[] array ) {
+
+        ArrayList<Integer> orderedList = new ArrayList<>();
+
+        // build a max heap from given array
+        this.buildMaxHeap( array );
+        System.out.println( "max heap array is: " + Arrays.toString( array));
+        int length = array.length;
+        int i = 0;
+        while ( i < length ) {
+            System.out.println(i + "# " + i);
+
+            orderedList.add( 0,array[0] );
+            System.out.println("List is: " + orderedList);
+
+            this.swap(0, array.length - 1, array);
+            System.out.println("Max heap after swap is: " + Arrays.toString(array));
+
+            array = Arrays.copyOfRange( array, 0, array.length - 1 );
+            System.out.println("New array output of copyOfRange method is: " + Arrays.toString(array));
+
+            this.maxHeapify( array, 0 );
+            System.out.println("array after maxheapify is: " + Arrays.toString(array));
+
+            i++;
+        }
+        return orderedList;
+    }
 
 
     public static void main( String[] args ) {
@@ -119,8 +146,9 @@ public class HeapSort {
         HeapSort hs = new HeapSort();
         int[] a = {1,2,3,4,5,6};
         //System.out.println( "The output array is: " ) ;
-        System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
+        //System.out.println( Arrays.toString(hs.buildMaxHeap( array )));
         //hs.buildMaxHeap( array );
         //System.out.println( Arrays.toString(hs.swap(0,1,a)) );
+        System.out.println( hs.heapSort( array ));
     }
 }
