@@ -54,7 +54,7 @@ public class HeapSort {
         // calculate right and left child of the node
         int rightChild = this.getRight( node );
         int leftChild = this.getLeft( node );
-        int largest = node; //-1;
+        int largest = node;
 
         // if node have left child and is greater than node
         if (( leftChild < array.length ) && ( array[leftChild] > array[node] )) {
