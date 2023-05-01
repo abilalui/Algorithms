@@ -7,6 +7,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Sorting" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Sorting/HeapSort" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/maxSubArray" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Trees" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Trees/Binary Search Tree" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
