@@ -1,4 +1,6 @@
 import javax.imageio.plugins.tiff.BaselineTIFFTagSet;
+import javax.xml.crypto.Data;
+import java.util.Objects;
 
 public class BinarySearchTree {
 
@@ -38,18 +40,39 @@ public class BinarySearchTree {
         }
     }
 
+    /**
+     * preOrderTraverse - method that traverse the tree in preOrder
+     */
+    public void preOrderTraverse( Node root ) {
+
+        if ( root != null ) {
+            System.out.println( root.getData() );
+            preOrderTraverse( root.getLeft() );
+            preOrderTraverse( root.getRight() );
+        }
+    }
+
+    /**
+     * postOrderTraverse - method that traverse the tree in postOrder
+     */
+    public void postOrderTraverse( Node root ) {
+
+        if ( root != null ) {
+            postOrderTraverse( root.getLeft() );
+            postOrderTraverse( root.getRight() );
+            System.out.println( root.getData() );
+        }
+    }
+
 
     /**
      * insert - insert a new data inside the given tree
      * @param data - new data to be inserted
      */
-    public void insert( int data) {
+    public void insert( int data ) {
+
         Node newNode = null;
         Node childNode = root;
-
-        if ( childNode == null ) {
-            root.setData( data );
-        }
 
         while ( childNode != null ) {
 
@@ -62,23 +85,40 @@ public class BinarySearchTree {
             }
         }
 
-        if ( data < newNode.getData() ) {
-            newNode.setLeft( new Node(data) );
+        if ( root != null ) {
+            if (data < newNode.getData()) {
+                newNode.setLeft(new Node(data));
+            } else {
+                newNode.setRight(new Node(data));
+            }
         } else {
-            newNode.setRight( new Node(data) );
+            root = new Node( data );
         }
 
     }
 
 
+
+
     public static void main( String[] args ) {
 
-        Node node = new Node(0, new Node(1), new Node(2));
-        BinarySearchTree BSTree = new BinarySearchTree( node );
-        BSTree.insert(3);
-        BSTree.insert(4);
-        //System.out.println( node );
-        BSTree.inOrderTraverse( node );
+        //Node node = new Node(1);
+
+        BinarySearchTree BSTree = new BinarySearchTree( null );
+        BSTree.root = new Node(1);
+        BSTree.root.setLeft( new Node(2) );
+        BSTree.root.setRight( new Node(3));
+        BSTree.root.getLeft().setLeft( new Node(4) );
+        BSTree.root.getLeft().setRight( new Node ( 5));
+
+        BSTree.inOrderTraverse( BSTree.root );
+        System.out.println("================================================");
+
+        BSTree.preOrderTraverse( BSTree.root );
+        System.out.println("================================================");
+
+        BSTree.postOrderTraverse( BSTree.root );
+        System.out.println("================================================");
 
     }
 }
