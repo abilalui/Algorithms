@@ -79,7 +79,8 @@ public class Node {
      * @return a string representation of the given node
      */
     public String toString() {
-        return "Node data: " + data + "\n" + "Left child: " + left.getData()
-                + "\n" + "Right child: " + right.getData() + "\n";
+        return "Node data: " + data;
+//                + "Left child: " + left.getData()
+//                + "\n" + "Right child: " + right.getData() + "\n";
     }
 }
