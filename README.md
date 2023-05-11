@@ -10,3 +10,5 @@ Current repositories inside src:
 
 
 Recent Updates:Trees repository was added
+
+Checking for successful push
