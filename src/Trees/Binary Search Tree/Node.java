@@ -4,24 +4,29 @@ public class Node {
     private Node left;
     private Node right;
 
+    private Node parent;
+
     /**
      * Constructor for Node Class: initialize the data for Node class.
      * @param data
      * @param left
      * @param right
+     * @param parent
      */
-    Node ( int data, Node left, Node right )  {
+    Node ( int data, Node left, Node right, Node parent )  {
         this.data = data;
         this.left = right;
         this.right = left;
+        this.parent = parent;
     }
 
     /**
      * Constructor for Node Class with left and Right child initialized to null
      * @param data
      */
-    Node ( int data ) {
+    Node ( int data, Node parent ) {
         this.data = data;
+        this.parent = parent;
         left = null;
         right = null;
     }
@@ -73,6 +78,24 @@ public class Node {
     public Node getRight() {
         return right;
     }
+
+    /**
+     * setParent - set parent of the Node
+     * @param - parent
+     */
+    public void setParent( Node parent ) {
+        this.parent = parent;
+    }
+
+    /**
+     * getParent - get the parent node of current node
+     * @return parent
+     */
+    public Node getParent() {
+        return parent;
+    }
+
+
 
     /**
      * toString: represent Node as a string
